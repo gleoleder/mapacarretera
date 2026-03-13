@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TXT6313TGG"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-TXT6313TGG');
+</script>
+    <meta property="og:title" content="City Roads — by Leonardo Cabrera" />
+    <meta property="og:image" content="https://i.imgur.com/Fbbe5a6.png" />
+    <meta property="og:description" content="Render every road in any city as a stunning vector map." />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="Description" content="Render every road in any city as a stunning vector map. Made by Leonardo Cabrera.">
+    <meta name="keywords" content="city roads visualization, roads, graph, visualization, map art" />
+    <meta name="author" content="Leonardo Cabrera">
+    <title>City Roads — by Leonardo Cabrera</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+
+      :root {
+        --ink:          #0a0a0f;
+        --ink-soft:     #16161e;
+        --ink-mid:      #1e1e2a;
+        --panel-bg:     rgba(10, 10, 15, 0.94);
+        --panel-border: rgba(255,255,255,0.08);
+        --accent:       #e8ff47;
+        --accent-dim:   rgba(232,255,71,0.12);
+        --accent-glow:  rgba(232,255,71,0.30);
+        --text:         #f0efe8;
+        --text-muted:   rgba(240,239,232,0.45);
+        --radius:       12px;
+        --font-body:    'Syne', sans-serif;
+        --font-mono:    'DM Mono', monospace;
+      }
+
+      body {
+        background-color: var(--ink);
+        position: absolute;
+        overflow: hidden;
+        font-family: var(--font-body);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        color: var(--text);
+        transition: background-color 3s ease-out;
+      }
+
+      #canvas, body {
+        margin: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0; bottom: 0; left: 0; right: 0;
+      }
+
+      ::-webkit-scrollbar { width: 4px; }
+      ::-webkit-scrollbar-track { background: transparent; }
+      ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 2px; }
+    </style>
+  </head>
+  <body>
+    <canvas id='canvas'></canvas>
+    <div id="host"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
