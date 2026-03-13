@@ -14,5 +14,5 @@
 // ─────────────────────────────────────────────────────────────────────────────
 
 const CONFIG = {
-  APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbw1NtrFAs3hyDmtdeIisEZXo93fFHtChnmw0YBWX7WREbcPzCtn6xHrNSYC7Y28rNeN/exec',  // ← PEGA AQUÍ tu URL /exec de Apps Script
+  APPS_SCRIPT_URL: 'https://script.google.com/macros/s/AKfycbwAu9YWqhqxOwLzyEwmMlr3eOjxuqrM0kEkWZ1qP33dgTRcv_Ft3lq0LgYiVt1tkJsL/exec',  // ← PEGA AQUÍ tu URL /exec de Apps Script
 };
