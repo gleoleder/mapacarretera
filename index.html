@@ -546,7 +546,9 @@ function exportarSVG(e) {
   const glc = $('canvas'), W=glc.width, H=glc.height, dpr=window.devicePixelRatio||1;
   const name = $('city-label').textContent || S.ciudadNombre;
   const lc   = hexARgb(S.lineColor);
-  const stroke = `rgba(${lc.r},${lc.g},${lc.b},${S.lineAlpha})`;
+  // SVG requiere stroke como hex y stroke-opacity por separado (no rgba())
+  const strokeHex = S.lineColor;
+  const strokeOp  = S.lineAlpha;
 
   let vb; try{vb=S.scene.getViewBox();}catch(e2){vb=null;}
   let paths = '';
@@ -563,13 +565,11 @@ function exportarSVG(e) {
     if (pts.length > 1) paths += `<polyline points="${pts.join(' ')}" fill="none"/>`;
   });
 
-  let footerSVG = '';
-
-    footerSVG = `
+  const footerSVG = `
   <text x="${W-24*dpr}" y="${H-48*dpr}" text-anchor="end" fill="${S.lblColor}" font-family="'Syne',sans-serif" font-weight="800" font-size="${30*dpr}">${esc(name)}</text>
   <text x="${W-24*dpr}" y="${H-18*dpr}" text-anchor="end" fill="${S.lblColor}" font-family="monospace" font-size="${11*dpr}" opacity="0.4">datos © OpenStreetMap · calles ciudad</text>`;
 
-  const svg = `<?xml version="1.0" encoding="UTF-8"?>\n<!-- Calles de la Ciudad — Leonardo Cabrera | Datos © OpenStreetMap contributors, ODbL 1.0 -->\n<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"><rect width="${W}" height="${H}" fill="${S.bgColor}"/><g stroke="${stroke}" stroke-width="${S.lineWidth}" stroke-linecap="round" stroke-linejoin="round">${paths}</g>${footerSVG}</svg>`;
+  const svg = `<?xml version="1.0" encoding="UTF-8"?>\n<!-- Calles de la Ciudad — Leonardo Cabrera | Datos © OpenStreetMap contributors, ODbL 1.0 -->\n<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${W} ${H}"><rect width="${W}" height="${H}" fill="${S.bgColor}"/><g stroke="${strokeHex}" stroke-opacity="${strokeOp}" stroke-width="${S.lineWidth}" stroke-linecap="round" stroke-linejoin="round">${paths}</g>${footerSVG}</svg>`;
 
   const blob=new Blob([svg],{type:'image/svg+xml'}); const url=URL.createObjectURL(blob);
   const a=document.createElement('a'); a.href=url; a.download=nombreSeguro(name)+'.svg'; a.click();
